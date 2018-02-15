@@ -22,6 +22,7 @@ RUN apt-get update \
 		echo 'install: --no-document'; \
 		echo 'update: --no-document'; \
 	} >> /etc/gemrc \ 
+    && (grep -q -E '^mesg n$' /root/.profile && sed -i 's/^mesg n$/tty -s \\&\\& mesg n/g' /root/.profile) || exit 0 \
     && /bin/bash -l -c "${SOURCE_RVM} && ${RUBY_INSTALL}" \ 
     && /bin/bash -l -c "${GEM_UPDATE}" \ 
     && /bin/bash -l -c "${SOURCE_RVM} && ${BUNDLER_INSTALL}"
