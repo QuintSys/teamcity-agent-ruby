@@ -12,10 +12,15 @@ ENV SOURCE_RVM="source /usr/share/rvm/scripts/rvm" \
 RUN apt-get update \
 	&& apt-get install -y --no-install-recommends \
 		software-properties-common \
+    && curl -sL https://deb.nodesource.com/setup_8.x | bash - \
+    && curl -sS https://dl.yarnpkg.com/debian/pubkey.gpg | apt-key add - \
+    && echo "deb https://dl.yarnpkg.com/debian/ stable main" | tee /etc/apt/sources.list.d/yarn.list \   
     && apt-add-repository -y ppa:rael-gc/rvm \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
         rvm \
+        nodejs \ 
+        yarn \
 	&& rm -rf /var/lib/apt/lists/* \
     && mkdir -p /etc/ \
 	&& { \
