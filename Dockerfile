@@ -18,6 +18,7 @@ RUN apt-get update \
     && apt-add-repository -y ppa:rael-gc/rvm \
     && apt-get update \
     && apt-get install -y --no-install-recommends \
+        git \
         rvm \
         nodejs \ 
         yarn \
