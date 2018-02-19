@@ -13,8 +13,9 @@ RUN sed -i 's/^mesg n || true$/tty -s \&\& mesg n/g' /root/.profile
 # install git, rvm, nodejs and yarn
 ENV RUBY_VERSION=2.4.3 \
     RUBYGEMS_VERSION=2.7.5 \
-    BUNDLER_VERSION=1.16.1 \
-    SOURCE_RVM="source /usr/share/rvm/scripts/rvm" \
+    BUNDLER_VERSION=1.16.1 
+
+ENV SOURCE_RVM="source /usr/share/rvm/scripts/rvm" \
     RUBY_INSTALL="rvm install ${RUBY_VERSION}" \
     GEM_UPDATE="gem update --system ${RUBYGEMS_VERSION}" \
     BUNDLER_INSTALL="rvm @global do gem install bundler --version ${BUNDLER_VERSION}" \
