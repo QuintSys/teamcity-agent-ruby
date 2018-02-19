@@ -33,4 +33,4 @@ RUN apt-get update \
     && /bin/bash -l -c "${GEM_UPDATE}" \ 
     && /bin/bash -l -c "${SOURCE_RVM} && ${BUNDLER_INSTALL}"
 
-CMD ["/run-services.sh"]
+CMD /bin/bash -c "${SOURCE_RVM} && source run-services.sh"
